@@ -1,0 +1,47 @@
+==================================================
+| MAC0110 - Introdução à Computação              |
+| Exercício 0                                    |
+| Aluno: Ricardo Hideki Hangai Kojo              |
+| Numero USP: 10295429                           |
+==================================================
+
+
+1. Para a mensagem cifrada 'gX76W3v7K', há uma chave que decodifica a mensagem em 'ILikeEve+'. Uma forma de achá-la é transformar a mensagem cifrada e a decodificada em bits, e depois fazer o XOR bit a bit. A técnica de codificar e decodificar é a mesma: com a mensagem cifrada e a chave é possível decifrar a mensagem através do XOR, da mesma forma que é possível achar a mensagem cifrada fazendo XOR entre a mensagem decifrada e a chave. Sendo assim, partir da mensagem cifrada e da mensagem procurada é possível achar a chave através do XOR. (XOR é associativo e comutativo)
+
+2. Da mesma forma que no exercício 1, há uma chave que decodifica a mensagem para 'IHateEve+' pois existe uma chave que codifica cada possibilidade de texto. Utilizando o XOR, é possível achar essa chave.
+
+3. Em base64 há 6 bits por caractére. Para 9 caractéres, temos 54 bits, formando 2⁵⁴ possibilidades de texto. Como uma chave também é um texto 9 caractéres, há 2⁵⁴ possibilidades de chave.
+Sendo assim, para um texto x qualquer, há 2⁵⁴ chaves que decodificam todos os 2⁵⁴ textos possíveis. Como cada chave é diferente (por ao menos 1 bit) cada mensagem é única.
+
+4. Para 'ILikeEve+' = 'ocZeIzAl0'
+Para 'IHateEve+' = 'oQhXIzAl0'
+
+
+Da mensagem cifrada 'gX76W3v7K' e da tabela de conversão base64 obtemos os bits:
+100000 010111 111011 111010 010110 110111 101111 111011 001010 = gX76W3v7K
+
+
+Das mensagens decodificadas temos:
+001000 001011 100010 100100 011110 000100 101111 011110 111110 = ILikeEve+
+001000 000111 011010 101101 011110 000100 101111 011110 111110 = IHateEve+
+
+
+A partir da mensagem cifrada e da procurada, fazemos o XOR bit a bit na seguinte forma:
+
+100000 010111 111011 111010 010110 110111 101111 111011 001010
+XOR para ILikeEve+
+001000 001011 100010 100100 011110 000100 101111 011110 111110
+---------------------------------------------------------------
+?????? ?????? ?????? ?????? ?????? ?????? ?????? ?????? ??????
+
+
+100000 010111 111011 111010 010110 110111 101111 111011 001010
+XOR para IHateEve+
+001000 000111 011010 101101 011110 000100 101111 011110 111110
+---------------------------------------------------------------
+?????? ?????? ?????? ?????? ?????? ?????? ?????? ?????? ??????
+
+Ao fim, chegamos aos seguintes resultados:
+101000 011100 011001 011110 001000 110011 000000 100101 110100 = ocZeIzAl0
+
+101000 010000 100001 010111 001000 110011 000000 100101 110100 = oQhXIzAl0
