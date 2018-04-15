@@ -5,6 +5,14 @@
 | Numero USP: 10295429                           |
 ==================================================
 
+=====================================================================================================
+| Nota: 8.5                                                                                         |
+|                                                                                                   |
+| Comentários do Monitor:                                                                           |
+|   Não explica o por que m^k=c e c^k=m é válido (m=mensagem, k=chave e c=mensagem cifrada). (-2.0) |
+|   Encontrou as chaves. (+0.5)                                                                     |
+=====================================================================================================
+
 
 1. Para a mensagem cifrada 'gX76W3v7K', há uma chave que decodifica a mensagem em 'ILikeEve+'. Uma forma de achá-la é transformar a mensagem cifrada e a decodificada em bits, e depois fazer o XOR bit a bit. A técnica de codificar e decodificar é a mesma: com a mensagem cifrada e a chave é possível decifrar a mensagem através do XOR, da mesma forma que é possível achar a mensagem cifrada fazendo XOR entre a mensagem decifrada e a chave. Sendo assim, partir da mensagem cifrada e da mensagem procurada é possível achar a chave através do XOR. (XOR é associativo e comutativo)
 
