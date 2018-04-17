@@ -1,0 +1,17 @@
+A fórmula fechada é:
+   p_n = (1 / n)
+sendo 'n' o número de pessoas no Amigo Secreto;
+
+Pensando em probabilidades quando uma permutação p aleatória é criada:
+Para n pessoas, a chance do número 0 cair na posição que irá quebrar a sequência na primeira troca (p[0] = 0) é de [(n - 1) / n]
+Para o número 1, a chance de quebrar a sequência na segunda troca é de [(n - 2) / n] e assim em diante
+Para o número n, a chance é de (1 / 2).
+
+Por exemplo, para n = 5:
+Ao distribuir os números na permutação p, a chance do 0 cair em qualquer casa menos p[0] é 4/5;
+Com o 0 preenchendo um espaço, para o número 1 a chance de não cair em p[1] é de 3/4;
+Para o número 2, a chance é de 2/3;
+Para o número 3, a chance é de 1/2;
+Para o número 4, a chance é de 1;
+No final temos (4/5) * (3/4) * (2/3) * (1/2) * 1 = 24/120
+24 das 120 permutações aleatórias são válida, o que equivale a 1/5.

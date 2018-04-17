@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+
+\title{Enunciado - Ex. 2 (Amigo secreto)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Um grupo de N amigos decide promover um amigo secreto. Para tal, eles usam um gerador de permuta\c{c}\~oes aleat\'orias dos n\'umeros 0, ... , N - 1. Se o gerador gera a permuta\c{c}\~ao armazenada no vetor a[], eles fazem o seguinte:
+\begin{itemize}
+  \item A pessoa 0 d\'a seu presente para a pessoa a[0]
+  \item A pessoa a[0] d\'a seu presente para a pessoa a[a[0]]
+  \item A pessoa a[a[0]] d\'a seu presente para a pessoa a[a[a[0]]] e assim por diante.
+  \item Se todos deram seus presentes, o processo termina. Caso contr\'ario, uma pessoa que ainda n\~ao seu presente, escolhida arbitrariamente, recome\c{c}a o processo.
+\end{itemize}
+Por exemplo, se N = 6 e a = { 3, 0, 4, 2, 5, 1 }, ent\~ao
+\begin{itemize}
+\item A pessoa 0 d\'a seu presente para a pessoa 3
+\item A pessoa 3 d\'a seu presente para a pessoa 2
+\item A pessoa 2 d\'a seu presente para a pessoa 4
+\item A pessoa 4 d\'a seu presente para a pessoa 5
+\item A pessoa 5 d\'a seu presente para a pessoa 1
+\item A pessoa 1 d\'a seu presente para a pessoa 0
+\end{itemize}
+Os N amigos executam esse plano, e percebem que a pessoa 0, que deu seu presente no come\c{c}o do jogo, recebeu seu presente somente no fim do jogo, depois de todos os outros terem ganhado seus presentes (como no exemplo acima). Eles ficam um tanto surpresos, e decidem investigar qual \'e a probabilidade $p_N$ de acontecer tal "fen\^omeno S" ("S" de "surpreendente"). (A probabilidade é denotada $p_N$ pois deve depender de N.)
+\bigbreak
+Escreva um programa que estima $p_N$.
+\bigbreak
+Mais precisamente, seu programa deve receber como entrada inteiros $NMAX$ e $T$. Seu programa deve ter como sa\'ida as estimativas obtidas para $p_2$, $p_3$, ... , $p_{NMAX}$. Para obter cada $p_N$, seu programa deve simular o processo para N pessoas T vezes.
+\bigbreak
+\textbf{B\^onus}. Encontre uma f\'ormula fechada para $p_N$. Justifique sua resposta.
+
+\end{document}
