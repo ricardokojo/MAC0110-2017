@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Web Ex. 1.4.10 (Connect four)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Fa\c{c}a o Web Exercise 1.4.10 (Connect four) de IntroCS:
+\bigbreak
+\url{http://introcs.cs.princeton.edu/java/14array/}
+\bigbreak
+
+\begin{enumerate}[i]
+	\item Inicialmente, voc\^e deve escrever o programa ConnFourGenerator.java para gerar configura\c{c}\~oes aleat\'orias N por N de '*', 'X' e 'O', com cada s\'imbolo aparecendo com probabilidade 1/3. Seu programa deve receber como argumento o valor de N. Seu programa deve tamb\'em receber um argumento adicional (0 ou 1), que indica se queremos a sa\'ida na forma tabular ou linear, como nos exemplos abaixo:
+	\begin{lstlisting}[breaklines, gobble=16]
+		$ java ConnFourGenerator 4 0
+		* * O O 
+		O * X * 
+		O O O O 
+		O X * * 
+		$ java ConnFourGenerator 4 1
+		*OXX*OXOX*X*O**O
+		$ java ConnFourGenerator 10 0
+		* X O * O * X X * X 
+		O * X O O O X * * O 
+		X X * X O * X X * * 
+		O O O X O X X * X O 
+		X X X O O X O X * X 
+		X O X O * O O X X X 
+		X O X X O X * * X X 
+		X O O * * * X O * O 
+		* * X * * X O X * O 
+		O X O X O X * * X * 
+		$ java ConnFourGenerator 10 1
+		O*XX**OX*X****O*XOX**O**OXOO*XO**OOOXXXOXXOO*OXXXOO*OXOX*OOXX*OOXO*XXXOX*OXO*O*O**XO*OXO*XXO**XXO*OX
+	\end{lstlisting}
+	\item Voc\^e deve escrever o programa ConnFour.java que recebe uma configura\c{c}\~ao N por N de '*', 'X' e 'O' como argumento e encontra uma sequ\^encia cont\'igua mais longa de s\'imbolos do mesmo tipo, como especificado no enunciado do Web Ex. 1.4.10.
+	\begin{lstlisting}[breaklines, gobble=16]
+		$ java ConnFour OOXX*XOOOXOXOXXO
+		O O X X 
+		* X O O 
+		O X O X 
+		O X X O 
+		3 / (1, 1) [X / v]
+		$ java ConnFour O*XOXOO**XO*OX*O*OOX*O*O**OXXX*X*OX*OOOXXOOOO*XXO**O*O*O*O*XOO*XOOXX*OOXX*XOOOXOXOXXOXXXXXXX*XOXXXX*
+		O * X O X O O * * X 
+		O * O X * O * O O X 
+		* O * O * * O X X X 
+		* X * O X * O O O X 
+		X O O O O * X X O * 
+		* O * O * O * O * X 
+		O O * X O O X X * O 
+		O X X * X O O O X O 
+		X O X X O X X X X X 
+		X X * X O X X X X * 
+		5 / (8, 5) [X / h]
+	\end{lstlisting}
+	No primeiro exemplo acima, a sequ\^encia encontrada tem comprimento 3, começa na entrada (1, 1), \'e uma sequ\^encia de X e \'e vertical. Analogamente, no segundo exemplo, a sequ\^encia encontrada tem comprimento 5, come\c{c}a na entrada (8, 5), \'e uma sequência de X e \'e horizontal.
+\end{enumerate}
+
+\end{document}
