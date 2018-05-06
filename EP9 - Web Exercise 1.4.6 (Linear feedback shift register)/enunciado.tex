@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Web Exercise 1.4.6 (Linear feedback shift register)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Fa\c{c}a a seguinte variante do Web Exercise 1.4.6 (Linear feedback shift register). Seu programa LFSRGen.java deve receber na linha de comando a "semente" e o "tap" a serem usados em seu LFSR. Al\'em disso, um terceiro argumento deve especificar quantos bits devem ser gerados. Exemplos de execu\c{c}\~ao:
+\bigbreak
+\begin{lstlisting}[breaklines, gobble=8]
+	$ java LFSRGen 01101000010 8 40
+	1100100100111101101110010110101110011000
+	$ java LFSRGen 01101000010 8 5
+	11001
+	$ java LFSRGen 01110001010 8 40
+	1011010000001100100001111101001100010011
+	$ java LFSRGen 01110001010 7 40
+	1111101110100100110100000100101001000011
+\end{lstlisting}
+\bigbreak
+Este exercício \'e uma parte inicial do exerc\'icio em
+
+\url{http://www.cs.princeton.edu/courses/archive/spr15/cos126/assignments/lfsr.html}
+
+que você far\'a mais para frente.
+\bigbreak
+\textbf{Observa\c{c}ão.} Para saber qual \'e o i-\'esimo caractere de um string s, use s.charAt(i). Veja o programa anexo QuantosAs.java.
+\bigbreak
+Veja tamb\'em \url{http://introcs.cs.princeton.edu/java/11cheatsheet/}
+\end{document}
