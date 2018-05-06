@@ -1,0 +1,65 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Web Ex. 1.5.1 (Word and line count)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Fa\c{c}a o Web Exercise 1.5.1 (Word and line count). Seu programa Wc.java deve receber a entrada na entrada padr\~ao e deve enviar para a sa\'ida padr\~ao o n\'umero de linhas, palavras e caracteres, separados pelo caractere '$\backslash$t' (TAB).
+\bigbreak
+Por exemplo,
+
+\begin{lstlisting}[breaklines, gobble=8]
+	$ java-introcs Wc < Wc.java
+	30 93 715
+	$ java-introcs Wc < bible_KJ.txt 
+	100223 824150 4351874
+\end{lstlisting}
+
+O arquivo bible\_KJ.txt est\'a dispon\'ivel em: \url{https://www.ime.usp.br/~yoshi/DATA/Gutenberg/}
+\bigbreak
+Seu programa ser\'a uma vers\~ao simples do utilit\'ario wc do Unix:
+\begin{lstlisting}[breaklines, gobble=8]
+	$ wc < Wc.java
+	30 93 715
+	$ wc < bible_KJ.txt 
+	100223 824150 4351874
+\end{lstlisting}
+Alguns programas que podem ajud\'a-lo est\~ao disponibilizados (Cat.java, CharCount.java, LineCount.java).
+\bigbreak
+Nesse exerc\'icio, uma "palavra" \'e uma sequência cont\'igua (um segmento) maximal de caracteres diferentes de espa\c{c}o. Aqui um "espa\c{c}o" \'e basicamente um branco, uma mudança de linha ('$\backslash$n'), um TAB ('$\backslash$t') etc. Para saber se um caractere ch \'e um espaço, voc\^e pode usar \textit{Character.isWhitespace(ch)}.
+\bigbreak
+Ex.
+\begin{lstlisting}[breaklines, gobble=8]
+	if (Character.isWhitespace(ch)) 
+	    StdOut.println("Eh espaco");
+	else 
+	    StdOut.println("Nao eh espaco");
+\end{lstlisting}
+\bigbreak
+\textbf{Importante:} para contar as palavras no texto, voc\^e deve implementar um algoritmo baseado no seguinte esquema. Coloque a entrada padr\~ao inteira em um string s; leia os caracteres de s um a um; nesse processo, voc\^e deve identificar os segmentos maximais de n\~ao-espaços (isto \'e, as palavras); toda vez que voc\^e identificar uma palavra, voc\^e deve incrementar seu contador.
+\bigbreak
+\textbf{B\^onus.} Um jeito mais f\'acil de contar palavras \'e baseado no uso do m\'etodo split() para strings. Veja
+
+\url{http://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space}
+\bigbreak
+Escreva uma variante de seu programa chamado Wc2.java baseado nessa ideia (o uso de split() basicamente trivializa esse exerc\'icio).
+\end{document}
