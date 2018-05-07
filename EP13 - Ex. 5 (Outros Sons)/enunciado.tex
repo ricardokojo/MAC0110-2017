@@ -1,0 +1,123 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\showboxdepth=\maxdimen
+\showboxbreadth=\maxdimen
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Ex. 5 (Outros sons)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Na fun\c{c}\~ao tone() em\href{https://introcs.cs.princeton.edu/java/21function/PlayThatTuneDeluxe.java.htm}{PlayThatTuneDeluxe.java}, usamos uma senoide para criar o vetor a[]. Podemos usar algoritmos diferentes para criar sons com "timbres" diferentes. Por exemplo, podemos usar o algoritmo de Karplus e Strong, descrito brevemente a seguir.
+\bigbreak
+Suponha que queremos gerar um som com tonalidade (frequ\^encia) hz e dura\c{c}\~ao d. Crie um vetor a[] com capacidade para N + 1 doubles, onde N \'e a parte inteira de (44100 * d). Seja p a parte inteira de 44100/hz. Preencha as primeiras p posi\c{c}\~oes de a[] com valores aleat\'orios sorteados no intervalo [-1, 1]. Para preencher as posi\c{c}\~oes p at\'e N do vetor a[], adote o seguinte algoritmo:
+\begin{lstlisting}[breaklines, gobble=8]
+	for (int i = p, j = 0; i <= N ; i++, j++)
+	     a[i] = .997*(a[j] + a[j+1])/2;
+\end{lstlisting}
+
+O vetor a[] produzido dessa forma cont\'em o som que podemos agora enviar para a sa\'ia de \'audio usando StdAudio.play(a). Esse som ter\'a a tonalidade dada por hz e dura\c{c}\~ao dada por d.
+\bigbreak
+Uma outra coisa interessante \'e que podemos alterar o modo como a[i] \'e calculado para que o seu som fique diferente! Voc\^e pode testar com:
+
+\begin{lstlisting}[breaklines, gobble=8]
+	a[i] = .997*(19*a[j] + a[j+1])/20;
+\end{lstlisting}
+
+ou
+
+\begin{lstlisting}[breaklines, gobble=8]
+	a[i] = .997*(a[j] + a[j+3])/2;
+\end{lstlisting}
+
+ou
+
+\begin{lstlisting}[breaklines, gobble=8]
+	a[i] = .997*(9*a[j] + a[j+5])/10;
+\end{lstlisting}
+
+ou
+
+\begin{lstlisting}[breaklines, gobble=8]
+	a[i] = .997*(8*a[j] + a[j+2] + a[j+8])/10;
+\end{lstlisting}
+
+etc.
+\bigbreak
+Nesse EP, voc\^es ter\~ao
+que criar uma vers\~ao melhorada de
+PlayThatTuneDeluxe.java (cujo nome ser\'a \textbf{PlayThatChordDeluxe.java}) que utiliza o algoritmo de Karplus--Strong ao inv\'es do m\'etodo da senoide!  Para isso, escreva uma fun\c{c}\~ao de assinatura
+\bigbreak
+\begin{lstlisting}[breaklines, gobble=8]
+	public static double[] wave(double hz, double d)
+\end{lstlisting}
+
+que devolve o vetor a[] obtido pelo processo do algoritmo Karplus--Strong e use-a no lugar do tone(), do PlayThatTuneDeluxe.
+\bigbreak
+Seu \textbf{PlayThatChordDeluxe.java} deve receber toda a entrada na entrada padr\~ao. Cada linha de entrada (n\~ao vazia) dever\'a ser constitu\'ida de um certo n\'umero (positivo) de inteiros e um real. Os inteiros indicam a tonalidade das notas a serem tocadas simultaneamente. O real indica a dura\c{c}\~ao dessas notas.
+\bigbreak
+Por exemplo, os arquivos elise.txt ou looney.txt poderiam ser dados como entrada para seu programa PlayThatChordDeluxe.java. Nesses casos, apenas uma nota seria tocada em cada momento (misturadas com pausas, ou seja, momentos de sil\^encio). Isto \'e, o comportamento de PlayThatChordDeluxe.java seria igual ao comportamento de PlayThatTuneDeluxe.java nesses casos.
+\bigbreak
+Por outro lado, seu PlayThatChordDeluxe.java deve tamb\'em aceitar entradas como \textbf{Ascale2.txt} dado abaixo. Nesse caso, v\'arias notas s\~ao tocadas simultaneamente.
+\bigbreak
+Al\'em disso, para o timbre do som ficar melhor, troque, \textbf{obrigatoriamente}, a linha
+
+\begin{lstlisting}[breaklines, gobble=8]
+	double hz = 440 * Math.pow(2, pitch / 12.0);
+\end{lstlisting}
+
+do PlayThatChord por
+
+\begin{lstlisting}[breaklines, gobble=8]
+	double hz = 220 * Math.pow(2, pitch / 12.0);
+\end{lstlisting}
+\bigbreak
+Experimente executar o PlayThatChordDeluxe usando como entrada
+os v\'arios exemplos de S\&W.
+\bigbreak
+Seu programa tamb\'em deve receber um argumento \textbf{OPCIONAL} da linha de comando. Se n\~ao houver esse argumento (ou seja, if(args.length < 1)), execute o programa usando o m\'etodo normal de calcular a[i] (que \'e $a[i] = .997*(a[j] + a[j+1])/2$). Se ele estiver presente (if(args.length >= 1)), voc\^e deve executar seu programa usando um outro m\'etodo de calcular a[i], de sua escolha (experimente testar com v\'arios e coloque aquele que voc\^e mais gostou piscando)
+\bigbreak
+Fa\c{c}a, tamb\'em, um relat\'orio (cujo nome deve ser \textbf{relatorio.<ext>} onde <ext> pode ser pdf ou txt) contando seus experimentos com os m\'etodos diferentes de calcular a[i] e sobre outras coisas que voc\^e julgar interessante!
+\bigbreak
+\textbf{N\~AO SE ESQUE\c{C}A:} Garanta que seu programa compile com javac\-introcs PlayThatChordDeluxe.java e que ele execute com java\-introcs PlayThatChordDeluxe.
+\bigbreak
+\textbf{Sugest\~ao.} Para ler uma linha da entrada padr\~ao, use StdIn.readLine(). Se s \'e do tipo String, fa\c{c}a
+
+\begin{lstlisting}[breaklines, gobble=8]
+	s = s.trim();
+\end{lstlisting}
+
+para jogar fora os espa\c{c}os no come\c{c}o e no fim de s. Fa\c{c}a
+
+\begin{lstlisting}[breaklines, gobble=8]
+	String[] t = s.split("\\s+");
+\end{lstlisting}
+
+para "decompor s" nos strings sem espa\c{c}o que comp\~oe s (e s\~ao separados por espa\c{c}os).
+\bigbreak
+\textbf{Observa\c{c}\~ao.} Voc\^e pode achar interessante visitar
+
+\url{https://en.wikipedia.org/wiki/Karplus%E2%80%93Strong_string_synthesis}
+
+\url{http://introcs.cs.princeton.edu/java/assignments/guitar.html}
+
+\url{http://introcs.cs.princeton.edu/java/21function/PlayThatTuneDeluxe.java.html}
+\end{document}

@@ -1,0 +1,13 @@
+Para o cálculo de a[i], os seguintes comportamentos foram observados:
+Considerando que o cálculo de a[i] segue o modelo a[i] = .997*(x*a[j] + a[j+y])/z :
+	Quanto maior o x, mais alto/agudo fica o som;
+	Quanto maior o y, maior o vibração/ruído das notas;
+	Quanto maior o z, menos vibrantes ficam as notas. O som fica mais seco, parecendo batidas/batucadas.
+
+Pegando os exemplos dados através do enunciado:
+	a[i] = .997*(19*a[j] + a[j+1])/20 --> Som mais estrondoso, mais vibrante;
+	a[i] = .997*(a[j] + a[j+3])/2 --> Som mais seco e mais baixo. Parece haver um ruido baixo no fundo;
+	a[i] = .997*(9*a[j] + a[j+5])/10 --> Meio termo entre os dois exemplo acima: as notas parecem mais vibrantes e o volume menor;
+	a[i] = .997*(8*a[j] + a[j+2] + a[j+8])/10 --> som quase sem vibração.
+
+Vale observar também que dentro do programa, para entradas muito negativas (-100 por exemplo), através do método Karplus e Strong, o som emitido é um ruído muito alto, parecido com estática.
