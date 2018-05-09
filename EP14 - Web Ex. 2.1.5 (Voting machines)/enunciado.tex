@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\showboxdepth=\maxdimen
+\showboxbreadth=\maxdimen
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Web Ex. 2.1.5 (Voting machines)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Fa\c{c}a o Web Exercise 2.1.5 (Voting Machines) de IntroCS:
+
+\url{http://introcs.cs.princeton.edu/java/21function/}
+
+(Este exerc\'icio aparece como o Creative Exercise 2.2.24 no livro; veja arquivo anexo)
+\bigbreak
+Seu programa deve chamar-se VotingMachines.java. Em linhas gerais, seu programa deve simular a elei\c{c}\~ao descrita no enunciado v\'arias vezes, e deve estimar a partir da\'i a probabilidade de o erro das urnas eletr\^onicas afetarem o resultado, isto \'e, ele deve estimar a probabilidade do resultado da vota\c{c}\~ao dar mais votos para o candidato B do que para A. Sem erros, o candidato A recebe (de acordo com os dados do enunciado) 51\% dos votos e ele deve ser vencedor nesta elei\c{c}\~ao. O ponto \'e que os erros das urnas podem afetar a contagem dos votos, resultando em mais votos para o candidato B do que para o candidato A. Queremos estimar a probabilidade desse resultado incorreto acontecer.
+\bigbreak
+Seu programa deve receber como argumentos de linha de comando quatro quantidades: N, a, f e T. O inteiro N \'e o n\'umero de votantes (100 milh\~oes no enunciado). O real a, entre 0 e 1, \'e a fra\c{c}\~ao de votantes que votam no candidato A (.51 no enunciado). O real f \'e a probabilidade de falha das urnas eletr\^onicas: a probabilidade de um voto ser computado incorretamente (.05 no enunciado). Finalmente, T \'e um inteiro que especifica quantas vezes a vota\c{c}\~ao deve ser simulada para estimarmos a probabilidade de B ser declarado vencedor.
+\bigbreak
+Seja p a probabilidade de B ser declarado vencedor. Naturalmente, p depende dos par\^ametros N, a e f. Assim, \'e natural denotar p por p(N, a, f). Usando esta nota\c{c}\~ao, seu programa VotingMachines.java estima p(N, a, f).
+\bigbreak
+Escreva tamb\'em um programa chamado VotingMachinesDeluxe.java, para responder a pergunta final no enunciado. Vamos dizer que a probabilidade de falha f \'e inaceit\'evel se p(N, a, f) for maior que 3\% e toler\'avel se p(N, a, f) menor ou igual a 3\%. Seu programa VotingMachinesDeluxe.java deve estimar o maior f toler\'avel para um dado par de par\^ametros N e a.
+\bigbreak
+\textbf{Sugest\~ao.} Para implementar VotingMachinesDeluxe.java, use o m\'etodo da bisse\c{c}\~ao.
+\bigbreak
+\hrulefill
+\bigbreak
+\textbf{Coment\'ario do Monitor:}
+\bigbreak
+O enunciado acima est\'a bem descrito, vai abaixo alguns exemplos:
+\bigbreak
+O primeiro caso \'e o do enunciado do livro (N = 100000000, a=0.51, f=0.05 e T=10000)
+\begin{lstlisting}[breaklines, gobble=8]
+	$ java-introcs VotingMachines 100000000 0.51 0.05 5
+	Wrong results/trials: 0/5
+	These values ​​are acceptable
+	
+	$ java-introcs VotingMachines 100000000 0.51 0.5 100
+	Wrong results/trials: 51/100
+	These values ​​are not acceptable
+\end{lstlisting}
+Lembrando que \'e aceit\'avel uma elei\c{c}\~ao quando $p(N, a, f) <= 3\%$, ou seja, quando $numeros\_resultados\_errados/numero\_tentativas <= 0.03$
+\bigbreak
+Em rela\c{c}\~ao ao VotingMachinesDeluxe voc\^e deve descobrir qual \'e o f. O seu erro deve ser menor do que 0.001, ou seja, o valor que voc\^e achar deve estar entre ]f-0.001, f+0.001[. O programa vai receber N, a e T como argumentos.
+
+Percebe que esses experimentos s\~ao baseados em n\'umeros aleat\'orios, portanto os resultados do exemplo podem n\~ao coincidir, mas devem ser pr\'oximos.
+\bigbreak
+No exemplo a seguir, N=1000, a=0.60 e T=100000
+\begin{lstlisting}[breaklines, gobble=8]
+	$ java-introcs VotingMachinesDeluxe 1000 0.60 100000
+	0.35947036
+\end{lstlisting}
+\bigbreak
+\textbf{Aviso:} se n\~ao for utilizar o m\'etodo da bisse\c{c}\~ao, deixe bem claro o que est\'a usando (recomendo usar o m\'etodo da bisse\c{c}\~ao).
+
+\end{document}
