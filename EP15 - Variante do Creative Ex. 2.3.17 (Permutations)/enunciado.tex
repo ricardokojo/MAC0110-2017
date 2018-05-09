@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{%
+  language=[LaTeX]TeX,
+  backgroundcolor=\color{gray!25},
+  basicstyle=\ttfamily,
+  breaklines=true,
+  columns=fullflexible
+}
+
+\title{Variante do Creative Ex. 2.3.17 (Permutations)}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Estude o Creative Exercise 2.3.17, Permutations, de IntroCS. Escreva uma variante de Permutations.java chamado Arrangements.java, que recebe um string na linha de comando e imprime todos os rearranjos do string dado, sem repeti\c{c}\~ao. O string dado poder\'a ter as letras a..z e A..Z.
+\bigbreak
+Exemplos:
+\begin{lstlisting}[breaklines, gobble=8]
+	$ java-introcs Arrangements abc
+	abc
+	acb
+	bac
+	bca
+	cab
+	cba
+	$ java-introcs Arrangements aaa
+	aaa
+	$ java-introcs Arrangements aab
+	aab
+	aba
+	baa
+	$ java-introcs Arrangements aabb
+	aabb
+	abab
+	abba
+	baab
+	baba
+	bbaa
+	$ java-introcs Arrangements ABBCCC
+	ABBCCC
+	ABCBCC
+	ABCCBC
+	ABCCCB
+	ACBBCC
+	ACBCBC
+	ACBCCB
+	ACCBBC
+	ACCBCB
+	ACCCBB
+	...
+	(esta execução de Arrangements gera 60 strings de saída.)
+\end{lstlisting}
+\bigbreak
+\textbf{Observa\c{c}\~ao.} Seu programa deve ter tempo de execução basicamente proporcional ao número de caracteres na saída (supondo que o string de entrada tem comprimento limitado, isso equivale a dizer que o tempo de execução de seu programa é basicamente proporcional ao números de strings impressos na saída).
+\bigbreak
+\textbf{Sugest\~ao.} Voc\^e pode achar interessante usar um vetor booleano "indexado por caracteres".  Em Java, o tipo char \'e basicamente equivalente a um inteiro (mais precisamente, um inteiro curto sem sinal (16 bits)).  A tradu\c{c}\~ao entre caracteres e inteiros \'e feita usando-se uma tabela de convers\~ao padr\~ao.  Os programas anexos d\~ao dicas de como manipular vetores indexados por chars.
+
+\end{document}
